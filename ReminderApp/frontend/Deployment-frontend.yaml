@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskapp-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goals-frontend
+  template:
+    metadata:
+      labels:
+        app: goals-frontend
+    spec:
+      containers:
+      - name: goals-frontend
+        image: goalsapp.azurecr.io/goals-frontend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: backend-service-name
+          value: service-backend # Provide the service-backend name as the value
+        - name: BACKEND_SERVICE_PORT
+          value: "3000"
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config
