@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN  NODE_ENV=development npm install
+#RUN  NODE_ENV=development npm install
+
+RUN npm install
 
 EXPOSE 3000
 
@@ -16,9 +18,7 @@ FROM nginx:latest
 
 COPY --from=react-build /app/build /usr/share/nginx/html
 
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY nginx/nginx.conf /etc/nginx/conf.d
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
