@@ -93,3 +93,6 @@ The Next step would be is to push the docker images to the container registry, s
             --docker-server=<container-registry-name>.azurecr.io \
             --docker-username=<service-principal-ID> \
             --docker-password=<service-principal-password>
+
+
+{text: "asdsads"}
