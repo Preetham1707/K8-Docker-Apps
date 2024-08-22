@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-service
+  name: rmdb-service
 spec:
   selector:
     app: goalsapp-mongodb
   ports:
   - port: 27017
     targetPort: 27017
-  type: ClusterIP
+  clusterIP: None
 
