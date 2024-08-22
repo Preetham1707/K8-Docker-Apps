@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-frontend
+  name: rmfe-svc
 spec:
   selector:
-    app: goals-frontend
+    app: rm-frontend
   ports:
   - port: 80
     targetPort: 80
