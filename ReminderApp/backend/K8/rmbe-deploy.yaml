@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rm-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rm-backend
+  template:
+    metadata:
+      labels:
+        app: rm-backend
+    spec:
+      containers:
+     # - name: goals-backend
+     #   image: goalsapp.azurecr.io/goals-backend:latest
+      - name: rm-backend
+        image: rmbackend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB
+          valueFrom:
+            configMapKeyRef:
+              name: rmbe-cm
+              key: DB

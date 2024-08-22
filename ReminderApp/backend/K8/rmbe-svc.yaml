@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-backend
+  name: rmbe-svc
 spec:
   selector:
-    app: goals-backend
+    app: rm-backend
   ports:
   - port: 3000
     targetPort: 80
