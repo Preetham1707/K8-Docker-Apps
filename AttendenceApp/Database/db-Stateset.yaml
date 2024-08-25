@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: attendencedb-ss
+spec:
+  replicas: 1
+  serviceName: attendencedb-service
+  selector:
+    matchLabels:
+      app: Attendence-PG
+  template:
+    metadata:
+      labels:
+        app: Attendence-PG
+    spec:
+      containers:
+      # - name: goalsapp-mongodb
+      - name: attendence-db
+      #  image: goalsapp.azurecr.io/mongo:latest
+        image: postgres
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+        - name: attendencedb-data
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: attendencedb-data
+    spec:
+      storageClassName: standard
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi  # Should match the size specified in mongodb-pvc.yaml
+
