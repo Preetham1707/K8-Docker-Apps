@@ -7,6 +7,11 @@ const pool =new Pool({
     port:process.env.POSTGRES_PORT,
     
 })
+// Log when a new client connects
+pool.on('connect', (client) => {
+    console.log(`Connected to the database: ${process.env.POSTGRES_DB} at ${process.env.POSTGRES_HOST}`);
+});
+
 module.exports= {pool};
 
 

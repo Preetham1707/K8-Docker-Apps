@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: attendencebe-cm
 data:
-  POSTGRES_HOST: attendencebe-svc
+  POSTGRES_HOST: attendencedb-service
   POSTGRES_PORT: '5432'
