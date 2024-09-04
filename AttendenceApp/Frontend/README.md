@@ -76,15 +76,7 @@ docker run --name backend -itd -p 8000:8000 backendv1
 docker run --name pgAttendence -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=Attendence -e POSTGRES_DB=postgres -itd postgres
 docker run --name pgadmin -itd -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=sawedev684@digdy.com  -e PGADMIN_DEFAULT_PASSWORD=attendence  dpage/pgadmin4
 
-Initial root token
-hvs.Vfs1JygnNpi1MBQNNtwXyLAr
 
-Key 1
-yXVMI4Pzp/TZLVOCjBdvSvb12PTVU/dquVN6q5ax04p1
-Key 2
-nTotMOnswwVCezjJHGVowGsyj2jHA/T7QJfoUT+uDj40
-Key 3
-k7sS1ovaoCIHpL/xBLzlskYQtaDEtMAGDoEhK8aYRiC0
 
 
 vault write auth/vlt-login/role/my-role \
