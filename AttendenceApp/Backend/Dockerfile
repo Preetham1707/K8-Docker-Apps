@@ -12,11 +12,11 @@ RUN groupadd -g 10001 attendence && \
 
 COPY . .
 
-# ENV POSTGRES_USER=admin
-# ENV POSTGRES_PASSWORD=Attendence
-# ENV POSTGRES_DB=postgres 
-# ENV POSTGRES_PORT=5432
-# ENV POSTGRES_HOST=pgAttendence
+ ENV POSTGRES_USER=admin
+ ENV POSTGRES_PASSWORD=Attendence
+ ENV POSTGRES_DB=postgres 
+ ENV POSTGRES_HOST=pgAttendence
+ ENV POSTGRES_PORT=5432
 # ENV FRONTEND=http://frontend:3000
 
 RUN  npm install 

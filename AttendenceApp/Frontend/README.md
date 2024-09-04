@@ -75,3 +75,32 @@ docker run --name frontend -itd -p 3000:3000 frontendv2
 docker run --name backend -itd -p 8000:8000 backendv1
 docker run --name pgAttendence -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=Attendence -e POSTGRES_DB=postgres -itd postgres
 docker run --name pgadmin -itd -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=sawedev684@digdy.com  -e PGADMIN_DEFAULT_PASSWORD=attendence  dpage/pgadmin4
+
+Initial root token
+hvs.Vfs1JygnNpi1MBQNNtwXyLAr
+
+Key 1
+yXVMI4Pzp/TZLVOCjBdvSvb12PTVU/dquVN6q5ax04p1
+Key 2
+nTotMOnswwVCezjJHGVowGsyj2jHA/T7QJfoUT+uDj40
+Key 3
+k7sS1ovaoCIHpL/xBLzlskYQtaDEtMAGDoEhK8aYRiC0
+
+
+vault write auth/vlt-login/role/my-role \
+    token_type=batch \
+    secret_id_ttl=10m \
+    token_ttl=20m \
+    token_max_ttl=30m \
+    secret_id_num_uses=40
+vault write auth/approle/login \
+    role_id=db02de05-fa39-4855-059b-67221c5c2f63 \
+    secret_id=6a174c20-f6de-a53c-74d2-6018fcceff64
+
+Key                Value
+---                -----
+token              65b74ffd-842c-fd43-1386-f7d7006e520a
+token_accessor     3c29bc22-5c72-11a6-f778-2bc8f48cea0e
+token_duration     20m0s
+token_renewable    true
+token_policies     [default]

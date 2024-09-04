@@ -17,7 +17,7 @@ spec:
         image: attendencefe:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         volumeMounts:
         - name: nginx-config-volume
           mountPath: /etc/nginx/nginx.conf
