@@ -16,7 +16,7 @@ spec:
      # - name: goals-backend
      #   image: goalsapp.azurecr.io/goals-backend:latest
       - name: attendence-backend
-        image: attendencebe:latest
+        image: abe:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
